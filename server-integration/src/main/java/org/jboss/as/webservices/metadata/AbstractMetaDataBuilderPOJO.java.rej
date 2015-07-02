@@ -1,0 +1,85 @@
+--- server-integration/src/main/java/org/jboss/as/webservices/metadata/AbstractMetaDataBuilderPOJO.java	(revision 18634)
++++ server-integration/src/main/java/org/jboss/as/webservices/metadata/AbstractMetaDataBuilderPOJO.java	(revision 18648)
+@@ -70,40 +68,40 @@
+         final JBossWebMetaData jbossWebMD = WSHelper.getRequiredAttachment(dep, JBossWebMetaData.class);
+         final DeploymentUnit unit = WSHelper.getRequiredAttachment(dep, DeploymentUnit.class);
+         final List<POJOEndpoint> pojoEndpoints = getPojoEndpoints(unit);
+-        final JSEArchiveMetaData jseArchiveMD = new JSEArchiveMetaData();
++        final JSEArchiveMetaData.Builder jseArchiveMDBuilder = new JSEArchiveMetaData.Builder();
+ 
+         // set context root
+         final String contextRoot = getContextRoot(dep, jbossWebMD);
+-        jseArchiveMD.setContextRoot(contextRoot);
++        jseArchiveMDBuilder.setContextRoot(contextRoot);
+         ROOT_LOGGER.settingContextRoot(contextRoot);
+ 
+         // set servlet url patterns mappings
+         final Map<String, String> servletMappings = getServletUrlPatternsMappings(jbossWebMD, pojoEndpoints);
+-        jseArchiveMD.setServletMappings(servletMappings);
++        jseArchiveMDBuilder.setServletMappings(servletMappings);
+ 
+         // set servlet class names mappings
+         final Map<String, String> servletClassNamesMappings = getServletClassMappings(jbossWebMD, pojoEndpoints);
+-        jseArchiveMD.setServletClassNames(servletClassNamesMappings);
++        jseArchiveMDBuilder.setServletClassNames(servletClassNamesMappings);
+ 
+         // set security domain
+         final String securityDomain = jbossWebMD.getSecurityDomain();
+-        jseArchiveMD.setSecurityDomain(securityDomain);
++        jseArchiveMDBuilder.setSecurityDomain(securityDomain);
+ 
+         // set wsdl location resolver
+         final JBossWebservicesMetaData jbossWebservicesMD = WSHelper.getOptionalAttachment(dep, JBossWebservicesMetaData.class);
+         if (jbossWebservicesMD != null) {
+             final PublishLocationAdapter resolver = new PublishLocationAdapterImpl(jbossWebservicesMD.getWebserviceDescriptions());
+-            jseArchiveMD.setPublishLocationAdapter(resolver);
++            jseArchiveMDBuilder.setPublishLocationAdapter(resolver);
+         }
+ 
+         // set security meta data
+         final List<JSESecurityMetaData> jseSecurityMDs = getSecurityMetaData(jbossWebMD.getSecurityConstraints());
+-        jseArchiveMD.setSecurityMetaData(jseSecurityMDs);
++        jseArchiveMDBuilder.setSecurityMetaData(jseSecurityMDs);
+ 
+         // set config name and file
+-        setConfigNameAndFile(jseArchiveMD, jbossWebMD, jbossWebservicesMD);
++        setConfigNameAndFile(jseArchiveMDBuilder, jbossWebMD, jbossWebservicesMD);
+ 
+-        return jseArchiveMD;
++        return jseArchiveMDBuilder.build();
+     }
+ 
+     protected abstract List<POJOEndpoint> getPojoEndpoints(final DeploymentUnit unit);
+@@ -114,14 +112,14 @@
+      * @param jseArchiveMD universal JSE meta data model
+      * @param jbossWebMD jboss web meta data
+      */
+-    private void setConfigNameAndFile(final JSEArchiveMetaData jseArchiveMD, final JBossWebMetaData jbossWebMD, final JBossWebservicesMetaData jbossWebservicesMD) {
++    private void setConfigNameAndFile(final JSEArchiveMetaData.Builder jseArchiveMDBuilder, final JBossWebMetaData jbossWebMD, final JBossWebservicesMetaData jbossWebservicesMD) {
+         if (jbossWebservicesMD != null) {
+            if (jbossWebservicesMD.getConfigName() != null) {
+               final String configName = jbossWebservicesMD.getConfigName();
+-              jseArchiveMD.setConfigName(configName);
++              jseArchiveMDBuilder.setConfigName(configName);
+               ROOT_LOGGER.settingConfigName(configName);
+               final String configFile = jbossWebservicesMD.getConfigFile();
+-              jseArchiveMD.setConfigFile(configFile);
++              jseArchiveMDBuilder.setConfigFile(configFile);
+               ROOT_LOGGER.settingConfigFile(configFile);
+ 
+               // ensure higher priority against web.xml context parameters
+@@ -134,12 +132,12 @@
+             for (final ParamValueMetaData contextParam : contextParams) {
+                 if (WSConstants.JBOSSWS_CONFIG_NAME.equals(contextParam.getParamName())) {
+                     final String configName = contextParam.getParamValue();
+-                    jseArchiveMD.setConfigName(configName);
++                    jseArchiveMDBuilder.setConfigName(configName);
+                     ROOT_LOGGER.settingConfigName(configName);
+                 }
+                 if (WSConstants.JBOSSWS_CONFIG_FILE.equals(contextParam.getParamName())) {
+                     final String configFile = contextParam.getParamValue();
+-                    jseArchiveMD.setConfigFile(configFile);
++                    jseArchiveMDBuilder.setConfigFile(configFile);
+                     ROOT_LOGGER.settingConfigFile(configFile);
+                 }
+             }

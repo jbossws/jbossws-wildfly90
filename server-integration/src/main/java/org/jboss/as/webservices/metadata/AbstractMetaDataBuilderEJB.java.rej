@@ -1,0 +1,47 @@
+--- server-integration/src/main/java/org/jboss/as/webservices/metadata/AbstractMetaDataBuilderEJB.java	(revision 18634)
++++ server-integration/src/main/java/org/jboss/as/webservices/metadata/AbstractMetaDataBuilderEJB.java	(revision 18648)
+@@ -51,12 +51,12 @@
+      */
+     final EJBArchiveMetaData create(final Deployment dep) {
+         ROOT_LOGGER.creatingEjbDeployment(dep.getSimpleName());
+-        final EJBArchiveMetaData ejbArchiveMD = new EJBArchiveMetaData();
++        final EJBArchiveMetaData.Builder ejbArchiveMDBuilder = new EJBArchiveMetaData.Builder();
+ 
+-        this.buildEnterpriseBeansMetaData(dep, ejbArchiveMD);
+-        this.buildWebservicesMetaData(dep, ejbArchiveMD);
++        this.buildEnterpriseBeansMetaData(dep, ejbArchiveMDBuilder);
++        this.buildWebservicesMetaData(dep, ejbArchiveMDBuilder);
+ 
+-        return ejbArchiveMD;
++        return ejbArchiveMDBuilder.build();
+     }
+ 
+     /**
+@@ -89,23 +89,23 @@
+ 
+        // set context root
+        final String contextRoot = webservicesMD.getContextRoot();
+-       ejbArchiveMD.setWebServiceContextRoot(contextRoot);
++       ejbArchiveMDBuilder.setWebServiceContextRoot(contextRoot);
+        ROOT_LOGGER.settingContextRoot(contextRoot);
+ 
+        // set config name
+        final String configName = webservicesMD.getConfigName();
+-       ejbArchiveMD.setConfigName(configName);
++       ejbArchiveMDBuilder.setConfigName(configName);
+        ROOT_LOGGER.settingConfigName(configName);
+ 
+        // set config file
+        final String configFile = webservicesMD.getConfigFile();
+-       ejbArchiveMD.setConfigFile(configFile);
++       ejbArchiveMDBuilder.setConfigFile(configFile);
+        ROOT_LOGGER.settingConfigFile(configFile);
+ 
+        // set wsdl location resolver
+        final JBossWebserviceDescriptionMetaData[] wsDescriptionsMD = webservicesMD.getWebserviceDescriptions();
+        final PublishLocationAdapter resolver = new PublishLocationAdapterImpl(wsDescriptionsMD);
+-       ejbArchiveMD.setPublishLocationAdapter(resolver);
++       ejbArchiveMDBuilder.setPublishLocationAdapter(resolver);
+     }
+ 
+     protected JBossPortComponentMetaData getPortComponent(final String ejbName, final JBossWebservicesMetaData jbossWebservicesMD) {
