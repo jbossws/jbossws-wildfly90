@@ -54,7 +54,7 @@
     <jbossws.spi.version>3.0.0.Final</jbossws.spi.version>
     <jbossws.common.version>3.0.0.Final</jbossws.common.version>
     <jboss.msc.version>1.2.6.Final</jboss.msc.version>
-    <wildfly.version>9.0.0.CR2</wildfly.version>
+    <wildfly.version>9.0.0.Final</wildfly.version>
     <wildfly.core.version>1.0.0.Final</wildfly.core.version>
     <wildfly.security-manager.version>9.0.0.CR2</wildfly.security-manager.version>
     <marshalling.river.version>1.4.10.Final</marshalling.river.version>
