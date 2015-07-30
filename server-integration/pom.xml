@@ -28,15 +28,15 @@
 
   <parent>
     <groupId>org.jboss.ws</groupId>
-    <artifactId>jbossws-wildfly900-parent</artifactId>
+    <artifactId>jbossws-wildfly901-parent</artifactId>
     <version>5.1.0-SNAPSHOT</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
 
-  <name>JBossWS JBoss WildFly 9.0.0.Final Server Side Integration</name>
-  <description>JBossWS WildFly 9.0.0.Final Server Side Integration</description>
+  <name>JBossWS JBoss WildFly 9.0.1.Final Server Side Integration</name>
+  <description>JBossWS WildFly 9.0.1.Final Server Side Integration</description>
   <groupId>org.jboss.ws</groupId>
-  <artifactId>jbossws-wildfly900-server-integration</artifactId>
+  <artifactId>jbossws-wildfly901-server-integration</artifactId>
   <packaging>jar</packaging>
 
   <dependencies>
