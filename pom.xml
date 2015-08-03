@@ -21,8 +21,7 @@
   ~ 02110-1301 USA, or see the FSF site: http://www.fsf.org.
   -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
   <parent>
@@ -35,13 +34,14 @@
   <description>JBossWS WildFly 9.0.0.Final Integration Parent</description>
   <groupId>org.jboss.ws</groupId>
   <artifactId>jbossws-wildfly900-parent</artifactId>
-  <version>5.1.0-SNAPSHOT</version>
+  <version>5.1.0.Beta1</version>
   <packaging>pom</packaging>
 
   <scm>
     <connection>scm:git:https://github.com/jbossws/jbossws-wildfly90.git</connection>
     <developerConnection>scm:git:https://github.com/jbossws/jbossws-wildfly90.git</developerConnection>
     <url>https://github.com/jbossws/jbossws-wildfly90</url>
+    <tag>jbossws-wildfly900-5.1.0.Beta1</tag>
   </scm>
 
   <modules>
