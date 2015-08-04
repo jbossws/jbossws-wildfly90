@@ -51,8 +51,8 @@
 
   <properties>
     <jbossws.api.version>1.0.3.Final</jbossws.api.version>
-    <jbossws.spi.version>3.0.0.Final</jbossws.spi.version>
-    <jbossws.common.version>3.0.0.Final</jbossws.common.version>
+    <jbossws.spi.version>3.0.1.Final</jbossws.spi.version>
+    <jbossws.common.version>3.0.1.Final</jbossws.common.version>
     <jboss.msc.version>1.2.6.Final</jboss.msc.version>
     <wildfly.version>9.0.0.Final</wildfly.version>
     <wildfly.core.version>1.0.0.Final</wildfly.core.version>
