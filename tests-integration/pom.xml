@@ -27,7 +27,7 @@
   <parent>
     <groupId>org.jboss.ws</groupId>
     <artifactId>jbossws-wildfly900-parent</artifactId>
-    <version>5.1.0.Final</version>
+    <version>5.1.1-SNAPSHOT</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
 
