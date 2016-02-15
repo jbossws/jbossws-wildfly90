@@ -46,13 +46,14 @@
 
   <modules>
     <module>server-integration</module>
+    <module>jaxrs-server-integration</module>
     <module>tests-integration</module>
   </modules>
 
   <properties>
-    <jbossws.api.version>1.0.3.Final</jbossws.api.version>
-    <jbossws.spi.version>3.1.0.Final</jbossws.spi.version>
-    <jbossws.common.version>3.1.1.Final</jbossws.common.version>
+    <jbossws.api.version>1.0.4.rest-SNAPSHOT</jbossws.api.version>
+    <jbossws.spi.version>3.1.1.rest-SNAPSHOT</jbossws.spi.version>
+    <jbossws.common.version>3.1.2-SNAPSHOT</jbossws.common.version>
     <jboss.msc.version>1.2.6.Final</jboss.msc.version>
     <wildfly.version>9.0.2.Final</wildfly.version>
     <wildfly.core.version>1.0.2.Final</wildfly.core.version>
@@ -70,6 +71,8 @@
     <hornetq.version>2.4.7.Final</hornetq.version>
     <xnio.version>3.3.0.Final</xnio.version>
     <jboss.jaxws.api.version>2.0.2.Final</jboss.jaxws.api.version>
+    <jboss.jaxrs.api.version>1.0.1.Final-SNAPSHOT</jboss.jaxrs.api.version>
+    <jboss.javax.annotation.api.version>1.0.0.Final</jboss.javax.annotation.api.version>
     <jboss.logging.tools.version>1.2.0.Final</jboss.logging.tools.version>
     <junit.version>4.11</junit.version>
   </properties>
@@ -362,6 +365,20 @@
         <groupId>org.jboss.spec.javax.xml.ws</groupId>
         <artifactId>jboss-jaxws-api_2.2_spec</artifactId>
         <version>${jboss.jaxws.api.version}</version>
+        <scope>provided</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>org.jboss.spec.javax.ws.rs</groupId>
+        <artifactId>jboss-jaxrs-api_2.0_spec</artifactId>
+        <version>${jboss.jaxrs.api.version}</version>
+        <scope>provided</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>org.jboss.spec.javax.annotation</groupId>
+        <artifactId>jboss-annotations-api_1.2_spec</artifactId>
+        <version>${jboss.javax.annotation.api.version}</version>
         <scope>provided</scope>
       </dependency>
 
