@@ -1,5 +1,9 @@
 .project
 .settings/
+jaxrs-server-integration/.classpath
+jaxrs-server-integration/.project
+jaxrs-server-integration/.settings/
+jaxrs-server-integration/target/
 server-integration/.classpath
 server-integration/.project
 server-integration/.settings/
