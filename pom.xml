@@ -34,7 +34,7 @@
   <description>JBossWS WildFly 9.0.1.Final Integration Parent</description>
   <groupId>org.jboss.ws</groupId>
   <artifactId>jbossws-wildfly901-parent</artifactId>
-  <version>5.1.1-SNAPSHOT</version>
+  <version>5.1.4.rest-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <scm>
