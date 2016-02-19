@@ -22,6 +22,7 @@
 
 package org.jboss.as.jaxrs.deployment;
 
+import org.jboss.as.ee.weld.WeldDeploymentMarker;
 import org.jboss.as.server.deployment.Attachments;
 import org.jboss.as.server.deployment.DeploymentPhaseContext;
 import org.jboss.as.server.deployment.DeploymentUnit;
@@ -58,6 +59,7 @@ public class JaxrsDependencyProcessor implements DeploymentUnitProcessor {
 //    public static final ModuleIdentifier JAXB_API = ModuleIdentifier.create("javax.xml.bind.api");
 //    public static final ModuleIdentifier JSON_API = ModuleIdentifier.create("javax.json.api");
     public static final ModuleIdentifier JAXRS_API = ModuleIdentifier.create("javax.ws.rs.api");
+    public static final ModuleIdentifier JAXRS_CDI = ModuleIdentifier.create("org.jboss.ws.cxf.jbossws-cxf-jaxrs-cdi");
 
     /**
      * We include this so that jackson annotations will be available, otherwise they will be ignored which leads
@@ -90,9 +92,9 @@ public class JaxrsDependencyProcessor implements DeploymentUnitProcessor {
 //        addDependency(moduleSpecification, moduleLoader, JACKSON_CORE_ASL, true);
 //        addDependency(moduleSpecification, moduleLoader, RESTEASY_CRYPTO, true);
 //
-//        if (WeldDeploymentMarker.isPartOfWeldDeployment(deploymentUnit)) {
-//            addDependency(moduleSpecification, moduleLoader, RESTEASY_CDI, true);
-//        }
+        if (WeldDeploymentMarker.isPartOfWeldDeployment(deploymentUnit)) {
+            addDependency(moduleSpecification, moduleLoader, JAXRS_CDI, true);
+        }
 
     }
 
